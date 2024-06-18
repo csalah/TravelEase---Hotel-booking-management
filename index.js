@@ -186,50 +186,7 @@ app.post("/login", async (req,res) => {
         
     }
 
-    // client.query(`Select * from projet.utilisateur`, (err, res) =>{
-    //     if(!err){
-    //         let userInput =  ""; 
-    //         let rows = res.rows;
-    //         let usernameEntered = req.body['username'];
-    //         let passEntered = req.body['password'];
-
-    //         for (let i = 0 ; i < rows.length ; i++){
-    //             if((rows[i]['email']).toLowerCase().trim() == usernameEntered.toLowerCase().trim()){
-    //                 if((rows[i]['password']).trim() == passEntered.trim()){
-    //                     userInput = (rows[i]['usertype']).toLowerCase().trim();
-    //                     var userT = userInput;
-                        
-    //                     userType.push(userT);
-
-
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     else {
-    //             console.log(err) ;
-    //    }
-
-    //     client.end;
-
-    // })
-    // console.log("usert: " + userType);
-
-
-
-    // if (userType[0] === "client") {
-    //     res.render("index.ejs", {hotels:hotels, rooms:rooms})
-    // }
-    // if(userType[0] === "admin")
-    // {
-    //     res.send("hehe");
-    // }
-    
-    // else{
-        
-    //     res.send("<script> alert('Unable to process login'); </script>" );
-        
-    // }
+ 
 });
 
 app.get("/rooms", async (req, res) =>{
@@ -516,15 +473,7 @@ app.post("/filter", async (req, res) => {
     }
     
     
-// if(req.body['category-output'] === undefined){
-//     console.log("nope");
-//     category = "resort,luxury";
-// } else {
-//     category = req.body['category-output'];
-//     console.log("did it");
-// }
 
-// console.log(category);
 
 });
 
@@ -604,8 +553,7 @@ var desc;
 var disponibilite;
 var extendable;
 var problems;
-console.log(room_number);
- console.log(req.body);
+
 
 let previousRoom = {};
 let foundRoom = false;
@@ -645,11 +593,7 @@ if(req.body['problems'] === undefined){problems = previousRoom['problemes']}else
    
 };
 
-console.log(req.body);
- console.log(capacity , vue, prix, desc, disponibilite, extendable, problems);
- console.log(previousRoom);
 
-// console.log("here" + room_number);
 
 try {
 
@@ -721,13 +665,10 @@ app.post("/checkIN", async (req,res) => {
             var listRes = currentRes.rows;
 
             const num = await client.query(`SELECT COUNT(*) FROM projet.location`);
-            console.log(num);
-            // var newIndex = listRes.length + 1;
             var newIndex = parseInt(num.rows[0]['count']) + 1;
 
 
             for(let i = 0 ; i < listRes.length; i++){
-                // console.log(listRes[i]['num_chambre']);
 
                 if(listRes[i]['num_chambre'] == num_chambre){
                     
@@ -767,6 +708,5 @@ app.post("/checkIN", async (req,res) => {
         
     }
 
-// console.log(req.body);
 
 });
