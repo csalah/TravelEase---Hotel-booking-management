@@ -75,7 +75,6 @@ INNER JOIN projet.Chambre c ON r.num_chambre = c.num_chambre
 INNER JOIN projet.Hotel h ON c.ID_hotel = h.ID_Hotel`, (err, res) =>{
     if(!err){
         let rows = res.rows;
-        // console.log(rows);
         for (let i = 0 ; i < rows.length ; i++){
             var row = rows[i];
             reservations.push(row);
@@ -89,7 +88,6 @@ INNER JOIN projet.Hotel h ON c.ID_hotel = h.ID_Hotel`, (err, res) =>{
 
 const app = express();
 
-// app.set('view engine', 'ejs')
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -280,9 +278,6 @@ app.post("/update-hotel" , (req,res) =>{
         
     }
 
-      
-    //res.redirect ("/");
-
 });
 
 app.post("/update-client", (req,res) => {
@@ -335,7 +330,6 @@ app.post("/filter", async (req, res) => {
             categoriesN.push("suite");
             categoriesN.push("resort");
             categoriesN.push("luxury");
-            // var category = ["suite","resort","luxury"];
             console.log("here" + categoriesN);
         } else{
         var cat = req.body['select-category-output'].trim().toString();}
@@ -495,7 +489,6 @@ app.post("/updateEmployee", (req,res) => {
 });
 
 app.post("/updateRoom",  async (req,res) => {
-// console.log(req.body);
 var room_number = "";
 room_number=  req.body['room'].trim();
 var prix;
