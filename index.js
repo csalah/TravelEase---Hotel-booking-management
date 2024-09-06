@@ -28,7 +28,6 @@ let clients = [];
 
 client.query(`Select * from projet.hotel`, (err, res) =>{
     if(!err){
-        // console.log(res.rows)
         let rows = res.rows;
         for (let i = 0 ; i < rows.length ; i++){
             var row = rows[i];
