@@ -99,15 +99,6 @@ app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`);
 });
 
-// app.get("/", (req, res) => {
-// if(userType === "client"){
-// res.render("index.ejs", {hotels:hotels, rooms:rooms});
-// } else {
-//     res.send("hehe");
-// }
-
-// });
-
 app.get("/", (req, res) => {
     if(!userIsAuth){
     res.render("login.ejs")}
@@ -152,29 +143,14 @@ app.post("/login", async (req,res) => {
                     hotelInfo.push(hotels[i]);
                 };
             }
-
-            // try {
-            //     var hotelID = hotelInfo[0].id_hotel.trim();
-            //     var hotelName = hotelInfo[0].nom_hotel.trim();
-
-            //     const reservationList = await client.query("SELECT * from projet.reservation");
-            //     console.log(reservationList.rows);
-            //     console.log(hotelInfo[0].id_hotel);
-                
-            // } catch (error) {
-            //     console.log(error);
-                
-            // }
-            res.redirect("/");
-
-            //unccc
-            // res.render ("adminDash.ejs" , {hotelInfo: hotelInfo, reservations:reservations});
+        
             }
                 
             }
             else
             { res.send("Incorrect password")
         }
+            
         }
         else
         {res.send("User not found");
@@ -238,14 +214,9 @@ app.get("/employees", async (req, res) =>{
             ]);
 
             const roles = await client.query("SELECT * from projet.role ");
-            // if(employees.rows.length > 0){
-
                 var employeeList = employees.rows;
                 var rolesList = roles.rows;
                res.render("employees.ejs", {employeeList:employeeList, rolesList:rolesList});
-
-            // }
-            // res.render("employees.ejs", {employees:employees});
 
             
         } catch (error) {
@@ -305,24 +276,6 @@ app.post("/update-hotel" , (req,res) =>{
             hotelname, chain, category, phone, addy, desc, hotel_id,
         ]);
 
-    // hotels= []
-    // console.log("step 1");
-    // client.query(`Select * from projet.chambre`, (err, res) =>{
-    //     if(!err){
-    //          console.log(res.rows)
-    //         let rows = res.rows;
-    //         for (let i = 0 ; i < rows.length ; i++){
-    //             var row = rows[i];
-    //             rooms.push(row);
-    //         }
-    //     }
-    //     else {
-    //         console.log(err.message);
-    //     }
-    //     client.end;
-    // })
-
-    // console.log("step 2");  
     } catch (error) {
         console.log("Unable to update info")
         
